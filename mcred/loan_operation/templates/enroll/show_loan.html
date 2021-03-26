@@ -1,0 +1,82 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.css">
+
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.js"></script>
+    <link rel="stylesheet" href="{% static 'css/showdata.css' %}">
+    <script src="{% static 'js/showdata.js' %}"></script>
+
+    <title>Document</title>
+    <script>
+    </script>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    {% block content %}
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary rounded">
+        <a class="navbar-brand" style="color:wheat;">MCRED</a>
+        <ul class="navbar-nav mr-auto"></ul>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" style="color:wheat;">
+                    <i class="fa fa-fw fa-user"></i>{{user_name}}
+                </a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link" href="{% url 'logout' %}" style="color:wheat;">
+                    <i class="fa fa-sign-out" style="font-size:15px;color:wheat;"></i>Logout</a>
+            </li>
+        </ul>
+    </nav>
+    <div>
+        {% if request.user.is_superuser %}
+        <table id="table_id" class="display">
+            <thead>
+                <tr>
+                    <th>User ID</th>
+                    <th>Username</th>
+                    <th>DOB</th>
+                    <th>Mobile No</th>
+                    <th>Pan</th>
+                    <th>Address</th>
+                    <th>City</th>
+                    <th>State</th>
+                    <th>Loan Amount</th>
+                    <th>Duration of Loan</th>
+                    <th>Rate Of Interest</th>
+                    <th>Interest Amount</th>
+                    <th>Final Amount</th>
+                    <th>Loan Limit</th>
+                    <th>Due Date</th>
+                    <th>Transaction Creation</th>
+                    <th>Bank Paid Moeny</th>
+                    <th>User To pay</th>
+
+                </tr>
+            </thead>
+            <tbody id="courserows"></tbody>
+            </tbody>
+        </table>
+        {% else %} {% endif %}
+    </div>
+    <div>
+        <button id="adding">Check Loan</button>
+    </div>
+    {% endblock %}
+</body>
+
+</html>

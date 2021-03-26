@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        $(document).ready(function() {
+            var oTable = $('#myDataTable').dataTable({
+                // "bServerSide": true,
+                "sAjaxSource": "fetchUserData.cfm",
+                "bProcessing": true,
+                "sPaginationType": "full_numbers",
+                "aoColumns": [{
+                    "mData": null
+                }, {
+                    "mData": "Name",
+                    "sTitle": "Name",
+                    "sWidth": "20%"
+                }, {
+                    "mData": "UserName",
+                    "sTitle": "UserName",
+                    "sWidth": "20%"
+                }, {
+                    "mData": "Passowrd",
+                    "sTitle": "Passowrd",
+                    "sWidth": "20%"
+                }, {
+                    "mData": "Email",
+                    "sTitle": "Email",
+                    "sWidth": "20%"
+                }, {
+                    "mData": "IsActive",
+                    "sTitle": "IsActive",
+                    "sWidth": "20%"
+                }, {
+                    "mData": null,
+                    "bSortable": false,
+                    "mRender": function(o) {
+                        return '<a href=#/' + o.userid + '>' + 'Edit' + '</a>';
+                    }
+                }]
+            });
+
+        });
+    </script>
+</head>
+
+<body>
+    <table id="myDataTable" class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>UserID</th>
+                <th>Name</th>
+                <th>UserName</th>
+                <th>Passowrd</th>
+                <th>Email</th>
+                <th>IsActive</th>
+                <th>Command</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+</body>
+
+</html>

@@ -1,0 +1,301 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+    <script src="{% static 'js/showemp.js' %}"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .container {
+            margin-top: 15px;
+            margin-left: 30%;
+        }
+        
+        .nav-link {
+            color: white;
+        }
+        
+        body {
+            font-family: all;
+            background-color: #ffccff45;
+        }
+        
+        h1 {
+            text-align: center;
+            color: rgb(2, 0, 36);
+        }
+        
+        #form {
+            background-color: rgb(90 90 241 / 60%);
+        }
+        
+        .btn-info {
+            transition: 0.5s ease-in-out;
+            background: rgb(2, 0, 36);
+            height: 40px;
+            font-size: 18px;
+            width: 83%;
+        }
+        
+        .btn-link {
+            padding-top: 10px;
+            color: white;
+            text-decoration: none;
+            outline: none;
+        }
+        
+        #adding {
+            padding: 1%;
+            cursor: pointer;
+            background: rgb(2, 0, 36);
+            border: none;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            text-transform: uppercase;
+            font-size: 64%;
+            -webkit-box-shadow: 0 10px 30px 0 rgba(95, 186, 233, 0.4);
+            box-shadow: 0 10px 30px 0 rgba(95, 186, 233, 0.4);
+            -webkit-border-radius: 5px 5px 5px 5px;
+            border-radius: 5px 5px 5px 5px;
+            /* margin: 5px 20px 40px 20px; */
+            -webkit-transition: all 0.3s ease-in-out;
+            -moz-transition: all 0.3s ease-in-out;
+            -ms-transition: all 0.3s ease-in-out;
+            -o-transition: all 0.3s ease-in-out;
+            transition: all 0.3s ease-in-out;
+            cursor: pointer !important;
+        }
+        
+        .btn-link:hover {
+            color: yellow;
+            text-decoration: none;
+            outline: none;
+        }
+        
+        .head h1 {
+            color: rgb(2, 0, 36);
+        }
+        
+        label {
+            color: black;
+        }
+        
+        input:focus,
+        input:hover {
+            border-color: none;
+            outline: none;
+            box-shadow: none;
+        }
+        
+        .bg-primary {
+            background-color: black !important;
+        }
+        
+        .container-1 {
+            padding: 5%;
+        }
+        
+        .button1 {
+            background: rgb(2, 0, 36);
+            border: none;
+            color: white;
+            padding: 4%;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            text-transform: uppercase;
+            font-size: 64%;
+            -webkit-box-shadow: 0 10px 30px 0 rgba(95, 186, 233, 0.4);
+            box-shadow: 0 10px 30px 0 rgba(95, 186, 233, 0.4);
+            -webkit-border-radius: 5px 5px 5px 5px;
+            border-radius: 5px 5px 5px 5px;
+            /* margin: 5px 20px 40px 20px; */
+            -webkit-transition: all 0.3s ease-in-out;
+            -moz-transition: all 0.3s ease-in-out;
+            -ms-transition: all 0.3s ease-in-out;
+            -o-transition: all 0.3s ease-in-out;
+            transition: all 0.3s ease-in-out;
+            cursor: pointer !important;
+        }
+    </style>
+</head>
+
+<body>
+    {% block content %}
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary rounded">
+        <a class="navbar-brand">V2STECH</a>
+        <ul class="navbar-nav mr-auto"></ul>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link">
+                    <i class="fa fa-fw fa-user"></i>{{user_name}}
+                </a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link">LOGOUT</a>
+            </li>
+        </ul>
+    </nav>
+    <div class="employee-table">
+        <div class="head">
+            <h1>Employee Management System</h1>
+        </div>
+        <div class="container-1 ">
+            <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
+            <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
+            <table id="table_id" class="display">
+                <thead>
+                    <tr>
+                        <th>Actions</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>User Name</th>
+                        <th>DOB</th>
+                        <th>Gender</th>
+                        <th>Email Address</th>
+                        <th>Contact Number</th>
+
+                    </tr>
+                </thead>
+                <tbody id="courserows"></tbody>
+                </tbody>
+            </table>
+            <div>
+                {% if request.user.is_superuser %}
+                <button id="adding">ADD</button> {% else %} {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="update-form">
+        <div class="head"></div>
+        <div class="form-allign">
+            <div class="container">
+                <div class="col-md-3"></div>
+                <div class="col-md-6" id="form">
+                    <form>
+                        <button type="button" id="back-update" class="btn btn-link back-link">Back</button>
+                        <h1 class="head-form">Employee Registration Form</h1>
+                        <br>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-1"></div>
+                            <div class="col-md-5">
+                                <label>FIRST NAME</label>
+                                <input type="text" id="first_name" placeholder="First Name" class="form-control" required="">
+                                <br>
+                            </div>
+                            <div class="col-md-5">
+                                <label>LAST NAME</label>
+                                <input type="text" id="last_name" placeholder="Last Name" class="form-control" required="">
+                            </div>
+                            <div class="col-md-1"></div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-1"></div>
+                            <div class="col-md-5">
+                                <label>USERNAME</label>
+                                <input type="Username" id="username" placeholder="Enter Username" class="form-control" required="">
+                                <br>
+                            </div>
+                            <div class="col-md-5">
+                                <label>EMAIL</label>
+                                <input type="Email" id="email_address" placeholder="Enter Email" class="form-control" required="">
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-1"></div>
+                            <div class="col-md-5">
+                                <label>DATE</label>
+                                <input type="date" id="date_of_birth" placeholder="date" class="form-control" required="">
+                                <br>
+                            </div>
+                            <div class="col-md-5">
+                                <label for="gender">gender</label>
+                                <select class="form-control" id="gender">
+                                    <option>M</option>
+                                    <option>F</option>
+                                    <option>U</option>
+                                </select>
+                            </div>
+                            <!-- <div class="col-md-1"></div> -->
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-1"></div>
+                            <div class="col-md-5">
+                                <label>CONTACT</label>
+                                <input type="tel" id="contact_number" pattern="[0-9]{10}" placeholder="Enter Country" class="form-control" required="">
+                            </div>
+                            <div class="col-md-5">
+                                <label>DELETED:<input type="checkbox" id="deleted" placeholder="deleted" class="form-control"></label>
+                            </div>
+
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-1"></div>
+                            <div class="col-md-10">
+                                <label>ADDRESS LINE 1</label>
+                                <input type="text" id="address_line_1" placeholder="Address Line 1" class="form-control" required="">
+                            </div>
+                            <div class="col-md-1"></div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-1"></div>
+                            <div class="col-md-10">
+                                <label>ADDRESS LINE 2</label>
+                                <input type="text" id="address_line_2" placeholder="Address Line 2" class="form-control" required="">
+                            </div>
+                            <div class="col-md-1"></div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-1"></div>
+                            <div class="col-md-10">
+                                <label>PINCODE</label>
+                                <input type="text" id="pincode" placeholder="pincode" class="form-control" required="">
+                            </div>
+                            <div class="col-md-1"></div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-1"></div>
+                            <div class="col-md-5">
+                                <label>CITY</label>
+                                <input type="text" id="city" placeholder="Enter City" class="form-control" required="">
+                                <br>
+                            </div>
+                            <div class="col-md-5">
+                                <label>COUNTRY</label>
+                                <input type="text" id="country" placeholder="Enter Country" class="form-control" required="">
+                            </div>
+                            <!-- <div class="col-md-1"></div> -->
+                        </div>
+                        <br>
+                        <center>
+                            <button type="Submit" id="update-butt" class="btn btn-info form-control" onclick="updateCourse()">UPDATE</button>
+                        </center>
+                        <br>
+                        <br>
+                    </form>
+                </div>
+                <div class="col-md-3"></div>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+</body>
+
+</html>

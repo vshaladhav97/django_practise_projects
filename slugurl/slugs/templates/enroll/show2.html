@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>This is to show url</h2>
+    <h2>{{ids}}</h2>
+    <h2>{{student}}</h2>
+    {% for i in  name %}
+            <tr>
+                <td>{{i.title}}</td>
+                <td>{{i.slug}}</td>
+                <td>{{i.description}}</td>
+                <td>{{i.image}}</td>
+                <td>{{i.author}}</td>
+
+            </tr>
+        {% endfor %}
+</body>
+</html>

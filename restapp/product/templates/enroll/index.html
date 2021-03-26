@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <table>
+        <tr>
+            <th>Product id</th>
+            <th>Product Name</th>
+            <th>Product Description</th>
+            <th>product price</th>
+        </tr>
+        {% for data in ProductSerializer %}
+        <td>{{data.id}}</td>
+        <td>{{data.name}}</td>
+        <td>{{data.description}}</td>
+        <td>{{data.price}}</td>
+        {% endfor %}
+    </table>
+</body>
+
+</html>

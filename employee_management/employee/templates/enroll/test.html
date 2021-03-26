@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <center>
+        <h1>Create a Post</h1>
+        <form action="" method="POST">
+            {% csrf_token %} Title:
+            <input type="text" name="title">
+            <br> Content:
+            <br>
+            <textarea cols="35" rows="8" name="content"></textarea>
+            <br>
+            <input type="submit" value="Post">
+        </form>
+        <table>
+            <thead class="">
+                <tr>
+                    <th>id</th>
+                    <th>title</th>
+                    <th>content</th>
+                </tr>
+            </thead>
+            {% for p in pi %}
+            <tr>
+                <td>{{p.id}}</td>
+                <td>{{p.title}}</td>
+                <td>{{p.content}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </center>
+</body>
+
+</html>

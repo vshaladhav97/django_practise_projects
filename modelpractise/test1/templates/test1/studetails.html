@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>student page</h1>
+    
+    {{stu}}
+    {{posts}}
+    {{inf}}
+    {{posts1}}
+    {{stud}}
+
+    <table>
+        <thead>
+            <tr>
+                <th>STUDENT ID</th>
+                <th>STUDENT NAME</th>
+                <th>STUDENT EMAIL</th>
+                <th>STUDENT PASSWORD</th>
+                <th>STUDENT TEACHER</th>
+            </tr>
+        </thead>
+        {% for i in  data %}
+            <tr>
+                <td>{{i.stuid}}</td>
+                <td>{{i.stuname}}</td>
+                <td>{{i.stuemail}}</td>
+                <td>{{i.stupass}}</td>
+                <td>{{i.teacher}}</td>
+            </tr>
+        {% endfor %}
+    </table>
+        
+    
+</body>
+</html>

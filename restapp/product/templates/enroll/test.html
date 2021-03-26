@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <center>
+        <html>
+
+        <head>
+            <title>Create a Post</title>
+        </head>
+
+        <body>
+            <h1>Create a Post</h1>
+            <form action="" method="POST">
+                {% csrf_token %} Title:
+                <input type="text" name="title">
+                <br> Content:
+                <br>
+                <textarea cols="35" rows="8" name="content"></textarea>
+                <br>
+                <input type="submit" value="Post">
+            </form>
+        </body>
+
+        </html>
+    </center>
+</body>
+
+</html>

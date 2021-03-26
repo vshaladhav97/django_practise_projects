@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <center>
+        <table>
+            <tr>
+                <th>id</th>
+                <th>name</th>
+                <th>Description</th>
+            </tr>
+            {% for download in fm %}
+            <tr>
+                <td>{{download.id}}</td>
+                <td>{{download.name}}</td>
+                <td>{{download.description}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </center>
+    {{ download.get_sample_by_order }}
+</body>
+
+</html>

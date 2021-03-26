@@ -1,0 +1,50 @@
+.container {
+    margin-top: 15px;
+}
+
+body {
+    font-family: all;
+    background-color: white;
+}
+
+h1 {
+    text-align: center;
+    color: #ffffff;
+}
+
+#form {
+    background-color: #4133b773;
+}
+
+.btn-info {
+    transition: 0.5s ease-in-out;
+    background: rgb(2, 0, 36);
+    height: 40px;
+    font-size: 18px;
+    width: 83%;
+}
+
+.btn-link {
+    padding-top: 10px;
+    color: white;
+    text-decoration: none;
+    outline: none;
+}
+
+.btn-link:hover,
+ :active {
+    color: yellow;
+    text-decoration: none;
+    outline: none;
+}
+
+label {
+    color: #ffffff;
+}
+
+input:focus,
+input:hover {
+    border-color: none;
+    outline: none;
+    box-shadow: none;
+}

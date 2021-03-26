@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <title>Index</title>
+    {% load static %}
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+
+
+</head>
+
+<body>
+    <div>
+        <form action="" method="POST">
+            {% csrf_token %} Firstname:
+            <input type="text" name="firstname" id="first_name">
+            <br> lastname:
+            <input type="text" name="lastname" id="last_name">
+            <br> age:
+            <input type="number" name="age" id="age">
+            <br>
+            <button onclick="addCourse()" id="addcourse">Add </button>
+        </form>
+    </div>
+    <script type="text/javascript">
+        var url = '/insert'
+        $(document).ready(function() {
+            $('#addcource').on('click', function() {
+                $first_name = $('#firstname').val();
+                $last_name = $('#lastname').val();
+                $age = $('#age').val();
+
+                if ($first_name == "" || $last_name == "" || $age == "") {
+                    alert("Please complete field");
+                } else {
+                    $.ajax({
+                        type: "POST",
+                        url: "insert",
+                        data: {
+                            first_name: $first_name,
+                            last_name: $last_name,
+                            age: $age,
+                            csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()
+
+                        },
+                        success: function() {
+                            alert('save data');
+                            $('#first_name').val('');
+                            $('#last_name').val('');
+                            $('#age').val('');
+                            window.location = "/";
+                        }
+                    });
+                }
+            });
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,152 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <link rel="stylesheet" href="{% static 'css/loan.css' %}">
+    <script src="{% static 'js/loans.js' %}"></script>
+    <script>
+    </script>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    {% block content %}
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary rounded">
+        <a class="navbar-brand" style="color:wheat;">MCRED</a>
+        <ul class="navbar-nav mr-auto"></ul>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" style="color:wheat;">
+                    <i class="fa fa-fw fa-user"></i>{{user_name}}
+                </a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link" href="{% url 'logout' %}" style="color:wheat;">
+                    <i class="fa fa-sign-out" style="font-size:15px;color:wheat;"></i>Logout</a>
+            </li>
+        </ul>
+    </nav>
+    <form action="" class="add_loan">
+        {% csrf_token %}
+
+        <button type="button" id="back-update" class="btn btn-link back-link"><i class='fas fa-arrow-circle-left' style='font-size:36px'></i></button>
+        <h1 class="head-form">Loan Checker</h1>
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+                <label>Duration Of Loan</label>
+                <input type="number" name="loan_duration" id="loan_duration" placeholder="Duration Of Loan" class="form-control" required="">
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+        <br>
+        <br>
+
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+                <label>Loan Amount:</label>
+                <input type="number" name="loan_amount" id="loan_amount" placeholder="Loan Amount" class="form-control" required="">
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+        <br>
+        <br>
+
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+
+                <label for="cars">Rate OF Interest:</label>
+                <select name="rate_of_interest" id="rate_of_interest" class="form-control" required="">
+                    <option>Choose From Below:</option>
+                    <option value=1>1% p.a.</option>
+                    <option value=2>2% p.a.</option>
+                    <option value=3>3% p.a.</option>
+                    <option value=4>4% p.a.</option>
+                    <option value=5>5% p.a.</option>
+                    <option value=6>6% p.a.</option>
+                    <option value=7>7% p.a.</option>
+                    <option value=8>8% p.a.</option>
+                    <option value=9>9% p.a.</option>
+                    <option value=10>10% p.a.</option>
+                    <option value=11>11% p.a.</option>
+                    <option value=12>12% p.a.</option>
+                    <option value=13>13% p.a.</option>
+                    <option value=14>14% p.a.</option>
+                    <option value=15>15% p.a.</option>
+                </select>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+        <br>
+        <br>
+
+    </form>
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <label>Calculated Interest</label>
+
+            <p id="calculated_sum" class='disabled-field'></p>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <label>Calculated Final Amount</label>
+
+            <p id="calculated_amt" class='disabled-field'></p>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <label>Loan Due Date</label>
+
+            <p id="calculated_due_date" class='disabled-field'></p>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <label>Bank Paid Moeny</label>
+            <p id="bank_paid_money" class='disabled-field'></p>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <label>User Has To pay</label>
+            <p id="user_to_pay" class='disabled-field'></p>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+
+
+
+    <div class="calculate_amt d-flex">
+        <button id="add" type="submit" class="btn btn-info form-control" onclick="calculate_interest()">Calculate</button>
+
+        <p id="calculated_amt"></p>
+        <button id="add" class="btn btn-info form-control" onclick="addCourse()">Submit</button>
+    </div>
+    {% endblock %}
+</body>
+
+</html>

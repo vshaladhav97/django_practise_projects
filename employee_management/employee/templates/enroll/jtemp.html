@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        $(#suit).click(function() {
+
+                    var data = {};
+                    data.title = $(#title).val();
+                    data.content = $(#content).val();
+
+                    $.ajax({
+                        url: 'your web url',
+                        type: 'POST',
+                        beforeSend: function(xhr, settings) {
+                            xhr.setRequestHeader("X-CSRFToken", '{{ csrf_token }}');
+                        },
+                        success: function(arg) {
+                            location.reload()
+                        }
+                    });
+    </script>
+</head>
+
+<body>
+    <center>
+        <h1>Create a Post</h1>
+        <form action="" method="POST">
+            Title:
+            <input type="text" name="title" id="title">
+            <br> Content:
+            <br>
+            <textarea cols="35" rows="8" name="content" id="content"></textarea>
+            <br>
+            <input type="submit" value="Post" id="suit">
+        </form>
+    </center>
+</body>
+
+</html>
